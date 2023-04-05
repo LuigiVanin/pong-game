@@ -4,8 +4,8 @@ use bevy::prelude::Color;
 
 pub const BALL_RADIUS: f32 = 10.;
 pub const BALL_COLOR: Color = Color::WHITE;
-pub const BALL_START_X: f32 = 100.;
-pub const BALL_START_Y: f32 = 100.;
+pub const BALL_START_X: f32 = 0.;
+pub const BALL_START_Y: f32 = 0.;
 pub const BALL_START_X_VELOCITY: f32 = 3.;
 pub const BALL_START_Y_VELOCITY: f32 = 3.;
 pub const PADDLE_WIDTH: f32 = 10.;

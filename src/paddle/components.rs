@@ -4,11 +4,11 @@ use bevy::sprite::MaterialMesh2dBundle;
 use crate::globals::Velocity;
 
 #[derive(Component)]
-pub struct Ball;
+pub struct Paddle;
 
 #[derive(Bundle)]
-pub struct BallBundle {
-    pub velocity: Velocity,
+pub struct PaddleBundle {
     pub mesh: MaterialMesh2dBundle<ColorMaterial>,
-    pub ball: Ball,
+    pub velocity: Velocity,
+    pub paddle: Paddle,
 }

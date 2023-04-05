@@ -1,6 +1,10 @@
 use bevy::prelude::*;
 
-use crate::ball::components::Velocity;
+#[derive(Component)]
+pub struct Velocity {
+    pub x: f32,
+    pub y: f32,
+}
 
 pub fn apply_velocity_system(mut query: Query<(&mut Transform, &Velocity)>, _time: Res<Time>) {
     // println!("{:?}", query);

@@ -1,7 +1,9 @@
 mod ball;
 mod config;
 mod globals;
+mod paddle;
 mod setup;
+use crate::ball::system::ball_collision;
 use crate::config::window::{WINDOW_HEIGHT, WINDOW_WIDTH};
 use crate::config::TIME_STEP;
 use crate::globals::apply_velocity_system;
@@ -26,7 +28,7 @@ fn main() {
         }))
         .add_system(bevy::window::close_on_esc)
         .add_startup_system(setup_system)
-        .add_systems((apply_velocity_system,).in_schedule(CoreSchedule::FixedUpdate))
+        .add_systems((apply_velocity_system, ball_collision).in_schedule(CoreSchedule::FixedUpdate))
         .insert_resource(FixedTime::new_from_secs(TIME_STEP))
         .run();
 }

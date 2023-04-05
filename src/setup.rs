@@ -1,5 +1,5 @@
-use crate::ball::components::*;
 use crate::config::*;
+use crate::{ball::components::*, globals::Velocity};
 use bevy::{prelude::*, sprite::MaterialMesh2dBundle};
 
 pub fn setup_system(
