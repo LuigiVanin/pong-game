@@ -7,6 +7,7 @@ pub fn setup_system(
     mut commands: Commands,
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<ColorMaterial>>,
+    mut spawn_timer: ResMut<SpawnTimer>,
 ) {
     commands.spawn(Camera2dBundle::default());
 

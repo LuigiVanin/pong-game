@@ -2,9 +2,9 @@ use bevy::prelude::*;
 use bevy::sprite::collide_aabb::collide;
 
 use crate::{
-    ball::components::Ball,
+    ball::components::{Ball, SpawnTimer},
     config::{PADDLE_HEIGHT, PADDLE_WIDTH},
-    paddle::components::{PlayerPosition, Position},
+    paddle::components::{Paddle, PlayerPosition, Position},
 };
 
 #[derive(Component)]
@@ -13,9 +13,25 @@ pub struct Velocity {
     pub y: f32,
 }
 
-pub fn apply_velocity_system(mut query: Query<(&mut Transform, &Velocity)>, _time: Res<Time>) {
-    // println!("{:?}", query);
-    for (mut transform, velocity) in query.iter_mut() {
+#[derive(Resource)]
+pub struct Scoreboard(pub [u8; 2]);
+
+pub fn apply_velocity_system(
+    mut spawn_timer: ResMut<SpawnTimer>,
+    mut ball_query: Query<(&mut Transform, &Velocity), With<Ball>>,
+    mut paddle_query: Query<(&mut Transform, &Velocity, &PlayerPosition), Without<Ball>>,
+    time: Res<Time>,
+) {
+    for (mut transform, velocity, _) in paddle_query.iter_mut() {
+        transform.translation.x += velocity.x;
+        transform.translation.y += velocity.y;
+    }
+
+    if !spawn_timer.timer.tick(time.delta()).finished() {
+        return;
+    }
+
+    for (mut transform, velocity) in ball_query.iter_mut() {
         transform.translation.x += velocity.x;
         transform.translation.y += velocity.y;
     }

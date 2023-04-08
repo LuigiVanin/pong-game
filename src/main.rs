@@ -3,10 +3,11 @@ mod config;
 mod globals;
 mod paddle;
 mod setup;
+use crate::ball::components::SpawnTimer;
 use crate::ball::system::ball_collision;
 use crate::config::window::{WINDOW_HEIGHT, WINDOW_WIDTH};
 use crate::config::TIME_STEP;
-use crate::globals::{apply_velocity_system, collision_effect_system};
+use crate::globals::{apply_velocity_system, collision_effect_system, Scoreboard};
 use crate::paddle::system::{paddle_boundery_check, paddle_movement_ketboard_event};
 use crate::setup::setup_system;
 use bevy::prelude::*;
@@ -40,5 +41,9 @@ fn main() {
                 .in_schedule(CoreSchedule::FixedUpdate),
         )
         .insert_resource(FixedTime::new_from_secs(TIME_STEP))
+        .insert_resource(Scoreboard([0, 0]))
+        .insert_resource(SpawnTimer {
+            timer: Timer::from_seconds(2., TimerMode::Once),
+        })
         .run();
 }

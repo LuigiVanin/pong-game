@@ -3,6 +3,11 @@ use bevy::sprite::MaterialMesh2dBundle;
 
 use crate::globals::Velocity;
 
+#[derive(Resource)]
+pub struct SpawnTimer {
+    pub timer: Timer,
+}
+
 #[derive(Component)]
 pub struct Ball;
 
