@@ -6,7 +6,8 @@ mod setup;
 use crate::ball::system::ball_collision;
 use crate::config::window::{WINDOW_HEIGHT, WINDOW_WIDTH};
 use crate::config::TIME_STEP;
-use crate::globals::apply_velocity_system;
+use crate::globals::{apply_velocity_system, collision_effect_system};
+use crate::paddle::system::{paddle_boundery_check, paddle_movement_ketboard_event};
 use crate::setup::setup_system;
 use bevy::prelude::*;
 
@@ -28,7 +29,16 @@ fn main() {
         }))
         .add_system(bevy::window::close_on_esc)
         .add_startup_system(setup_system)
-        .add_systems((apply_velocity_system, ball_collision).in_schedule(CoreSchedule::FixedUpdate))
+        .add_systems(
+            (
+                collision_effect_system,
+                apply_velocity_system,
+                ball_collision,
+                paddle_movement_ketboard_event,
+                paddle_boundery_check,
+            )
+                .in_schedule(CoreSchedule::FixedUpdate),
+        )
         .insert_resource(FixedTime::new_from_secs(TIME_STEP))
         .run();
 }
