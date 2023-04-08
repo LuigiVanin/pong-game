@@ -22,10 +22,10 @@ pub fn ball_collision(
         }
 
         // NOTE: This will be removed when we add the paddle
-        if transform.translation.x + BALL_RADIUS > WINDOW_WIDTH / 2.
-            || transform.translation.x - BALL_RADIUS < -(WINDOW_WIDTH / 2.)
-        {
-            velocity.x = -velocity.x;
-        }
+        // if transform.translation.x + BALL_RADIUS > WINDOW_WIDTH / 2.
+        //     || transform.translation.x - BALL_RADIUS < -(WINDOW_WIDTH / 2.)
+        // {
+        //     velocity.x = -velocity.x;
+        // }
     }
 }
