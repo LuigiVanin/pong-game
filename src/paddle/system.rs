@@ -66,7 +66,7 @@ pub fn paddle_movement_ketboard_event(
 pub fn paddle_boundery_check(
     mut query: Query<(&mut Transform, &mut Velocity, &PlayerPosition), With<Paddle>>,
 ) {
-    for (mut transform, mut velocity, pos) in query.iter_mut() {
+    for (mut transform, mut velocity, _pos) in query.iter_mut() {
         let paddle_limit = (WINDOW_HEIGHT / 2.) - (PADDLE_HEIGHT / 2.) - 20.;
         if transform.translation.y > paddle_limit {
             transform.translation.y = paddle_limit;

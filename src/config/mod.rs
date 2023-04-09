@@ -3,7 +3,7 @@ pub mod window;
 
 use bevy::prelude::Color;
 
-use self::window::{WINDOW_HEIGHT, WINDOW_WIDTH};
+use self::window::WINDOW_WIDTH;
 
 pub const BALL_RADIUS: f32 = 10.;
 pub const BALL_COLOR: Color = Color::WHITE;

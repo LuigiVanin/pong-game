@@ -17,10 +17,6 @@ use crate::paddle::system::{paddle_boundery_check, paddle_movement_ketboard_even
 use crate::setup::setup_system;
 use bevy::prelude::*;
 
-fn update_test_system(time: Res<Time>) {
-    println!("Time: {}", time.delta_seconds());
-}
-
 fn main() {
     println!("Hello, world!");
     App::new()
