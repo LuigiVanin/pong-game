@@ -1,3 +1,4 @@
+pub mod text;
 pub mod window;
 
 use bevy::prelude::Color;

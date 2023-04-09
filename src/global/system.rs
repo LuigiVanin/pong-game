@@ -1,20 +1,19 @@
-use bevy::prelude::*;
-use bevy::sprite::collide_aabb::collide;
+use bevy::{prelude::*, sprite::collide_aabb::collide};
 
 use crate::{
     ball::components::{Ball, SpawnTimer},
     config::{PADDLE_HEIGHT, PADDLE_WIDTH},
-    paddle::components::{Paddle, PlayerPosition, Position},
+    global::components::Scoreboard,
+    paddle::components::{PlayerPosition, Position},
 };
 
-#[derive(Component)]
-pub struct Velocity {
-    pub x: f32,
-    pub y: f32,
-}
+use super::components::Velocity;
 
-#[derive(Resource)]
-pub struct Scoreboard(pub [u8; 2]);
+pub fn update_scoreboard(score: Res<Scoreboard>, mut score_text: Query<(&mut Text,)>) {
+    let (mut text,) = score_text.single_mut();
+    let [left_score, right_score] = score.0;
+    text.sections[0].value = format!("{} | {}", left_score, right_score);
+}
 
 pub fn apply_velocity_system(
     mut spawn_timer: ResMut<SpawnTimer>,

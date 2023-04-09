@@ -1,7 +1,7 @@
 use bevy::prelude::*;
 use bevy::sprite::MaterialMesh2dBundle;
 
-use crate::globals::Velocity;
+use crate::global::components::Velocity;
 
 #[derive(Resource)]
 pub struct SpawnTimer {

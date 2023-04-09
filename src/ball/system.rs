@@ -6,7 +6,7 @@ use crate::{
         window::{WINDOW_HEIGHT, WINDOW_WIDTH},
         BALL_RADIUS,
     },
-    globals::{Scoreboard, Velocity},
+    global::components::{Scoreboard, Velocity},
 };
 
 use super::components::{Ball, SpawnTimer};
@@ -39,7 +39,7 @@ pub fn ball_collision(
         scoreboard.0 = [left_player, right_player];
         velocity.x = -velocity.x;
         reset_ball_position(&mut transform);
-        println!("Scoreboard: {:?}", scoreboard.0);
+        println!("Scoreboard| {:?}", scoreboard.0);
         time.timer.reset();
     }
 }

@@ -1,13 +1,18 @@
 mod ball;
 mod config;
-mod globals;
+mod global;
+// mod globals;
 mod paddle;
 mod setup;
 use crate::ball::components::SpawnTimer;
 use crate::ball::system::ball_collision;
 use crate::config::window::{WINDOW_HEIGHT, WINDOW_WIDTH};
 use crate::config::TIME_STEP;
-use crate::globals::{apply_velocity_system, collision_effect_system, Scoreboard};
+use crate::global::{
+    components::Scoreboard,
+    system::{apply_velocity_system, collision_effect_system, update_scoreboard},
+};
+
 use crate::paddle::system::{paddle_boundery_check, paddle_movement_ketboard_event};
 use crate::setup::setup_system;
 use bevy::prelude::*;
@@ -30,6 +35,7 @@ fn main() {
         }))
         .add_system(bevy::window::close_on_esc)
         .add_startup_system(setup_system)
+        .add_system(update_scoreboard)
         .add_systems(
             (
                 collision_effect_system,

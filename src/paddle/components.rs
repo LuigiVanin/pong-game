@@ -3,7 +3,7 @@ use bevy::sprite::MaterialMesh2dBundle;
 
 use crate::config::window::WINDOW_WIDTH;
 use crate::config::{PADDLE_LEFT_START_X, PADDLE_RIGHT_START_X};
-use crate::globals::Velocity;
+use crate::global::components::Velocity;
 
 #[derive(Component)]
 pub struct Paddle;
@@ -27,6 +27,7 @@ pub struct PaddleBundle {
 }
 
 impl Position {
+    #[allow(dead_code)]
     pub fn get_starting_x(&self) -> f32 {
         match self {
             Position::Right => PADDLE_RIGHT_START_X,
@@ -34,6 +35,7 @@ impl Position {
         }
     }
 
+    #[allow(dead_code)]
     pub fn get_paddle_wall(&self) -> f32 {
         match self {
             Position::Right => WINDOW_WIDTH / 2.,

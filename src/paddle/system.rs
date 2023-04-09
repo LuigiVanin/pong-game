@@ -2,7 +2,7 @@ use bevy::prelude::*;
 
 use crate::{
     config::{window::WINDOW_HEIGHT, PADDLE_HEIGHT, PADDLE_SPEED},
-    globals::Velocity,
+    global::components::Velocity,
     paddle::components::Position,
 };
 
