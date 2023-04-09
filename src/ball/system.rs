@@ -1,4 +1,5 @@
 use bevy::prelude::*;
+use rand::Rng;
 
 use crate::{
     config::{
@@ -44,6 +45,9 @@ pub fn ball_collision(
 }
 
 fn reset_ball_position(transform: &mut Transform) {
+    let mut rnd = rand::thread_rng();
+
+    let y_pos = rnd.gen_range(-200..200);
     transform.translation.x = 0.;
-    transform.translation.y = 0.;
+    transform.translation.y = y_pos as f32;
 }
