@@ -68,10 +68,7 @@ Every time a point is scored the ball respawn at the center on a randow **y** po
 ### Tools 🛠
 
 <p align="center">
-    <img src="https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)">
-    <img src="https://img.shields.io/badge/Git-E34F26?style=for-the-badge&logo=git&logoColor=white" />
-    <img src="https://img.shields.io/badge/bevy-%23000000.svg?style=for-the-badge&logoColor=white)">
-    <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" />
+    <img width="250" src="https://skillicons.dev/icons?i=rust,bevy,vscode,git&perline=4">
 </p>
 
 ### Contact 📫
